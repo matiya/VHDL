@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="error" file="HDLCompiler" num="410" delta="unknown" >"/home/default/workspace/LED_driver/main.vhd" Line 50: Expression has <arg fmt="%d" index="1">8</arg> elements ; expected <arg fmt="%d" index="2">15</arg>
+</msg>
+
+<msg type="error" file="Simulator" num="777" delta="unknown" >Static elaboration of top level VHDL design unit <arg fmt="%s" index="1">uutofmain</arg> in library <arg fmt="%s" index="2">work</arg> failed
+</msg>
+
+</messages>
+

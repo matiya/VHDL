@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "/home/default/workspace/LED_driver/uutofMain_isim_beh.exe" -prj "/home/default/workspace/LED_driver/uutofMain_beh.prj" "work.uutofMain" 
