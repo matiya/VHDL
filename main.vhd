@@ -108,19 +108,34 @@ begin
 			  elsif(SEL = "11") then NSTATE <= COUNTER;
 			  elsif(SEL = "00") then NSTATE <= IDLE;
 			  else NSTATE <= SHIFT;
-			   if (shift_cnt < 6) then
-					for i in 0 to 6 loop 
-						--hVecOutTemp(i+1) <= hVecOutTemp(i); 
-						--hVecOutTemp(i) <= '0'; 
-						if(hVecOutTemp(i+1) /= hVecOutTemp(i)) then
-							hVecOutTemp(i+1) <= hVecOutTemp(i);
-							hVecOutTemp(i) <= '0'; 
-						end if;
-					end loop; --shifting register
+			  if(boolVar = '0') then --shift ascending
+					if (shift_cnt < 7) then
+						hVecOutTemp(shift_cnt+1) <= hVecOutTemp(shift_cnt); 
+						hVecOutTemp(shift_cnt) <= '0';
+						shift_cnt <= shift_cnt +1;
+					else
+						boolVar <= '1';
+					end if;
+				else --shift descending
+					if(shift_cnt > 0) then
+						hVecOutTemp(shift_cnt-1) <= hVecOutTemp(shift_cnt); 
+						hVecOutTemp(shift_cnt) <= '0';
+						shift_cnt <= shift_cnt -1;
+					else
+						boolVar <= '0';
+					end if;
+--					for i in 0 to 6 loop 
+--						--hVecOutTemp(i+1) <= hVecOutTemp(i); 
+--						--hVecOutTemp(i) <= '0'; 
+--						if(hVecOutTemp(i+1) /= hVecOutTemp(i)) then
+--							hVecOutTemp(i+1) <= hVecOutTemp(i);
+--							hVecOutTemp(i) <= '0'; 
+--						end if;
+--					end loop; --shifting register
 					
-					shift_cnt <= shift_cnt + 1;
-         else
-               shift_cnt <= 0;
+--					shift_cnt <= shift_cnt + 1;
+--         else
+--               shift_cnt <= 0;
          end if;
 			  --hVecOutTemp <= shift_left(hVecOutTemp);
 			  D_OUT <= std_logic_vector(hVecOutTemp);
