@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/default/workspace/LED_driver/main.ncd
+OUTFILE=/home/default/workspace/LED_driver/main.bit
+FAMILY=Spartan3A and Spartan3AN
+PART=xc3s700an-4fgg484
+WORKINGDIR=/home/default/workspace/LED_driver
+LICENSE=WebPack
+USER_INFO=210818762_0_0_879

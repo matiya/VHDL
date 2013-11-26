@@ -1,0 +1,7 @@
+V3 3
+FL /home/default/workspace/LED_driver/main.vhd 2013/11/26.14:47:48 P.20131013
+EN work/main 1385474360 FL /home/default/workspace/LED_driver/main.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/main/Behavioral 1385474361 \
+      FL /home/default/workspace/LED_driver/main.vhd EN work/main 1385474360

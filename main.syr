@@ -1,0 +1,844 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.10 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.10 secs
+ 
+--> 
+Reading design: main.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "main.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "main"
+Output Format                      : NGC
+Target Device                      : xc3s700an-4-fgg484
+
+---- Source Options
+Top Module Name                    : main
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "/home/default/workspace/LED_driver/main.vhd" in Library work.
+Entity <main> compiled.
+Entity <main> (Architecture <behavioral>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <main> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <main> in library <work> (Architecture <behavioral>).
+WARNING:Xst:819 - "/home/default/workspace/LED_driver/main.vhd" line 71: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <hVecOutTemp>, <boolVar>, <shift_cnt>
+INFO:Xst:2679 - Register <hVecOutTemp$mux0000> in unit <main> has a constant value of 00000000 during circuit operation. The register is replaced by logic.
+Entity <main> analyzed. Unit <main> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <main>.
+    Related source file is "/home/default/workspace/LED_driver/main.vhd".
+    Found finite state machine <FSM_0> for signal <PSTATE>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 16                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 4                                              |
+    | Clock              | CLK_DIV                   (rising_edge)        |
+    | Reset              | RESET                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | idle                                           |
+    | Power Up State     | shift                                          |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+WARNING:Xst:737 - Found 1-bit latch for signal <hVecOutTemp_6>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <hVecOutTemp_5>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <hVecOutTemp_4>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 4-bit latch for signal <shift_cnt>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <hVecOutTemp_3>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <hVecOutTemp_2>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <boolVar>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <hVecOutTemp_1>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <hVecOutTemp_0>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 8-bit latch for signal <D_OUT>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 8-bit latch for signal <hVecOutRunning>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <hVecOutTemp_7>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Found 25-bit up counter for signal <count>.
+    Found 8-bit adder for signal <hVecOutRunning$addsub0000> created at line 168.
+    Found 4-bit comparator greatequal for signal <hVecOutTemp_6$cmp_ge0000> created at line 105.
+    Found 4-bit comparator greater for signal <hVecOutTemp_6$cmp_gt0000> created at line 113.
+    Found 4-bit comparator lessequal for signal <hVecOutTemp_6$cmp_le0000> created at line 113.
+    Found 4-bit comparator less for signal <hVecOutTemp_6$cmp_lt0000> created at line 105.
+    Found 4-bit addsub for signal <shift_cnt$share0000> created at line 104.
+    Found 1-bit register for signal <temp>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <main> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 2
+ 4-bit addsub                                          : 1
+ 8-bit adder                                           : 1
+# Counters                                             : 1
+ 25-bit up counter                                     : 1
+# Registers                                            : 1
+ 1-bit register                                        : 1
+# Latches                                              : 12
+ 1-bit latch                                           : 9
+ 4-bit latch                                           : 1
+ 8-bit latch                                           : 2
+# Comparators                                          : 4
+ 4-bit comparator greatequal                           : 1
+ 4-bit comparator greater                              : 1
+ 4-bit comparator less                                 : 1
+ 4-bit comparator lessequal                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <PSTATE/FSM> on signal <PSTATE[1:2]> with user encoding.
+---------------------
+ State   | Encoding
+---------------------
+ shift   | 00
+ counter | 01
+ running | 10
+ idle    | 11
+---------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# Adders/Subtractors                                   : 2
+ 4-bit addsub                                          : 1
+ 8-bit adder                                           : 1
+# Counters                                             : 1
+ 25-bit up counter                                     : 1
+# Registers                                            : 1
+ Flip-Flops                                            : 1
+# Latches                                              : 12
+ 1-bit latch                                           : 9
+ 4-bit latch                                           : 1
+ 8-bit latch                                           : 2
+# Comparators                                          : 4
+ 4-bit comparator greatequal                           : 1
+ 4-bit comparator greater                              : 1
+ 4-bit comparator less                                 : 1
+ 4-bit comparator lessequal                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <main> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block main, actual ratio is 1.
+Latch shift_cnt_0 has been replicated 1 time(s)
+Latch shift_cnt_1 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 28
+ Flip-Flops                                            : 28
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : main.ngr
+Top Level Output File Name         : main
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 12
+
+Cell Usage :
+# BELS                             : 253
+#      GND                         : 1
+#      INV                         : 3
+#      LUT1                        : 25
+#      LUT2                        : 31
+#      LUT2_L                      : 3
+#      LUT3                        : 22
+#      LUT3_D                      : 1
+#      LUT4                        : 98
+#      MUXCY                       : 31
+#      MUXF5                       : 12
+#      VCC                         : 1
+#      XORCY                       : 25
+# FlipFlops/Latches                : 59
+#      FDC                         : 25
+#      FDCE                        : 1
+#      FDP                         : 2
+#      LD                          : 31
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 11
+#      IBUF                        : 3
+#      OBUF                        : 8
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s700anfgg484-4 
+
+ Number of Slices:                      101  out of   5888     1%  
+ Number of Slice Flip Flops:             51  out of  11776     0%  
+ Number of 4 input LUTs:                183  out of  11776     1%  
+ Number of IOs:                          12
+ Number of bonded IOBs:                  12  out of    372     3%  
+    IOB Flip Flops:                       8
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+---------------------------------------------------+--------------------------+-------+
+Clock Signal                                       | Clock buffer(FF name)    | Load  |
+---------------------------------------------------+--------------------------+-------+
+CLK                                                | BUFGP                    | 26    |
+hVecOutTemp_7_not0001(hVecOutTemp_7_not000172:O)   | NONE(*)(hVecOutTemp_7)   | 1     |
+hVecOutTemp_0_not0001(hVecOutTemp_0_not0001:O)     | NONE(*)(hVecOutTemp_0)   | 1     |
+hVecOutTemp_1_not0001(hVecOutTemp_1_not00012_f5:O) | NONE(*)(hVecOutTemp_1)   | 1     |
+boolVar_not0001(boolVar_not000148:O)               | NONE(*)(boolVar)         | 1     |
+hVecOutTemp_2_not0001(hVecOutTemp_2_not00012:O)    | NONE(*)(hVecOutTemp_2)   | 1     |
+hVecOutTemp_3_not0001(hVecOutTemp_3_not000198:O)   | NONE(*)(hVecOutTemp_3)   | 1     |
+hVecOutTemp_4_not0001(hVecOutTemp_4_not000181_f5:O)| NONE(*)(hVecOutTemp_4)   | 1     |
+hVecOutTemp_5_not0001(hVecOutTemp_5_not000132:O)   | NONE(*)(hVecOutTemp_5)   | 1     |
+hVecOutTemp_6_not0001(hVecOutTemp_6_not000132:O)   | NONE(*)(hVecOutTemp_6)   | 1     |
+shift_cnt_not0001(shift_cnt_not0001:O)             | NONE(*)(shift_cnt_0)     | 6     |
+temp                                               | NONE(PSTATE_FSM_FFd1)    | 2     |
+hVecOutRunning_not0001(hVecOutRunning_not00011:O)  | NONE(*)(hVecOutRunning_0)| 8     |
+D_OUT_not0001(D_OUT_not0001:O)                     | NONE(*)(D_OUT_0)         | 8     |
+---------------------------------------------------+--------------------------+-------+
+(*) These 12 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+RESET                              | IBUF                   | 28    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 6.130ns (Maximum Frequency: 163.132MHz)
+   Minimum input arrival time before clock: 7.173ns
+   Maximum output required time after clock: 5.668ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'CLK'
+  Clock period: 6.130ns (frequency: 163.132MHz)
+  Total number of paths / destination ports: 976 / 27
+-------------------------------------------------------------------------
+Delay:               6.130ns (Levels of Logic = 26)
+  Source:            count_1 (FF)
+  Destination:       count_24 (FF)
+  Source Clock:      CLK rising
+  Destination Clock: CLK rising
+
+  Data Path: count_1 to count_24
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              2   0.591   0.590  count_1 (count_1)
+     LUT1:I0->O            1   0.648   0.000  Mcount_count_cy<1>_rt (Mcount_count_cy<1>_rt)
+     MUXCY:S->O            1   0.632   0.000  Mcount_count_cy<1> (Mcount_count_cy<1>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<2> (Mcount_count_cy<2>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<3> (Mcount_count_cy<3>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<4> (Mcount_count_cy<4>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<5> (Mcount_count_cy<5>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<6> (Mcount_count_cy<6>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<7> (Mcount_count_cy<7>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<8> (Mcount_count_cy<8>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<9> (Mcount_count_cy<9>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<10> (Mcount_count_cy<10>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<11> (Mcount_count_cy<11>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<12> (Mcount_count_cy<12>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<13> (Mcount_count_cy<13>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<14> (Mcount_count_cy<14>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<15> (Mcount_count_cy<15>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<16> (Mcount_count_cy<16>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<17> (Mcount_count_cy<17>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<18> (Mcount_count_cy<18>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<19> (Mcount_count_cy<19>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<20> (Mcount_count_cy<20>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<21> (Mcount_count_cy<21>)
+     MUXCY:CI->O           1   0.065   0.000  Mcount_count_cy<22> (Mcount_count_cy<22>)
+     MUXCY:CI->O           0   0.065   0.000  Mcount_count_cy<23> (Mcount_count_cy<23>)
+     XORCY:CI->O           1   0.844   0.500  Mcount_count_xor<24> (Result<24>)
+     LUT2:I1->O            1   0.643   0.000  Mcount_count_eqn_241 (Mcount_count_eqn_24)
+     FDC:D                     0.252          count_24
+    ----------------------------------------
+    Total                      6.130ns (5.040ns logic, 1.090ns route)
+                                       (82.2% logic, 17.8% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'boolVar_not0001'
+  Clock period: 2.923ns (frequency: 342.133MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               2.923ns (Levels of Logic = 1)
+  Source:            boolVar (LATCH)
+  Destination:       boolVar (LATCH)
+  Source Clock:      boolVar_not0001 falling
+  Destination Clock: boolVar_not0001 falling
+
+  Data Path: boolVar to boolVar
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q              34   0.728   1.295  boolVar (boolVar)
+     LUT4:I2->O            1   0.648   0.000  boolVar_mux00131 (boolVar_mux0013)
+     LD:D                      0.252          boolVar
+    ----------------------------------------
+    Total                      2.923ns (1.628ns logic, 1.295ns route)
+                                       (55.7% logic, 44.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'shift_cnt_not0001'
+  Clock period: 5.162ns (frequency: 193.708MHz)
+  Total number of paths / destination ports: 79 / 6
+-------------------------------------------------------------------------
+Delay:               5.162ns (Levels of Logic = 4)
+  Source:            shift_cnt_2 (LATCH)
+  Destination:       shift_cnt_1 (LATCH)
+  Source Clock:      shift_cnt_not0001 falling
+  Destination Clock: shift_cnt_not0001 falling
+
+  Data Path: shift_cnt_2 to shift_cnt_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q              39   0.728   1.407  shift_cnt_2 (shift_cnt_2)
+     LUT2_L:I0->LO         1   0.648   0.103  shift_cnt_mux0011<1>104_SW0 (N40)
+     LUT4:I3->O            1   0.648   0.452  shift_cnt_mux0011<1>104 (shift_cnt_mux0011<1>104)
+     LUT4:I2->O            1   0.648   0.000  shift_cnt_mux0011<1>159_G (N65)
+     MUXF5:I1->O           2   0.276   0.000  shift_cnt_mux0011<1>159 (shift_cnt_mux0011<1>)
+     LD:D                      0.252          shift_cnt_1
+    ----------------------------------------
+    Total                      5.162ns (3.200ns logic, 1.962ns route)
+                                       (62.0% logic, 38.0% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'hVecOutRunning_not0001'
+  Clock period: 4.772ns (frequency: 209.556MHz)
+  Total number of paths / destination ports: 38 / 8
+-------------------------------------------------------------------------
+Delay:               4.772ns (Levels of Logic = 3)
+  Source:            hVecOutRunning_2 (LATCH)
+  Destination:       hVecOutRunning_7 (LATCH)
+  Source Clock:      hVecOutRunning_not0001 falling
+  Destination Clock: hVecOutRunning_not0001 falling
+
+  Data Path: hVecOutRunning_2 to hVecOutRunning_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               4   0.728   0.730  hVecOutRunning_2 (hVecOutRunning_2)
+     LUT3:I0->O            4   0.648   0.587  hVecOutRunning_mux0005<3>111 (N53)
+     MUXF5:S->O            1   0.756   0.423  hVecOutRunning_mux0005<7>_SW0_f5 (N14)
+     LUT4:I3->O            1   0.648   0.000  hVecOutRunning_mux0005<7> (hVecOutRunning_mux0005<7>)
+     LD:D                      0.252          hVecOutRunning_7
+    ----------------------------------------
+    Total                      4.772ns (3.032ns logic, 1.740ns route)
+                                       (63.5% logic, 36.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'hVecOutTemp_7_not0001'
+  Total number of paths / destination ports: 4 / 1
+-------------------------------------------------------------------------
+Offset:              5.962ns (Levels of Logic = 4)
+  Source:            SEL<0> (PAD)
+  Destination:       hVecOutTemp_7 (LATCH)
+  Destination Clock: hVecOutTemp_7_not0001 falling
+
+  Data Path: SEL<0> to hVecOutTemp_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   0.849   1.160  SEL_0_IBUF (SEL_0_IBUF)
+     LUT3:I0->O           15   0.648   1.097  hVecOutTemp_3_not000146 (N42)
+     LUT4:I1->O            5   0.643   0.665  hVecOutTemp_1_mux0014111 (N27)
+     LUT4:I2->O            1   0.648   0.000  hVecOutTemp_7_mux0014 (hVecOutTemp_7_mux0014)
+     LD:D                      0.252          hVecOutTemp_7
+    ----------------------------------------
+    Total                      5.962ns (3.040ns logic, 2.922ns route)
+                                       (51.0% logic, 49.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'hVecOutTemp_0_not0001'
+  Total number of paths / destination ports: 4 / 1
+-------------------------------------------------------------------------
+Offset:              6.771ns (Levels of Logic = 5)
+  Source:            SEL<1> (PAD)
+  Destination:       hVecOutTemp_0 (LATCH)
+  Destination Clock: hVecOutTemp_0_not0001 falling
+
+  Data Path: SEL<1> to hVecOutTemp_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.849   1.114  SEL_1_IBUF (SEL_1_IBUF)
+     LUT4:I1->O            8   0.643   0.789  hVecOutTemp_3_not000151 (N46)
+     LUT3:I2->O            6   0.648   0.701  hVecOutTemp_1_mux001424 (N39)
+     LUT3:I2->O            2   0.648   0.479  hVecOutTemp_0_mux000811 (N71)
+     LUT4:I2->O            1   0.648   0.000  hVecOutTemp_0_mux0008 (hVecOutTemp_0_mux0008)
+     LD:D                      0.252          hVecOutTemp_0
+    ----------------------------------------
+    Total                      6.771ns (3.688ns logic, 3.083ns route)
+                                       (54.5% logic, 45.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'hVecOutTemp_1_not0001'
+  Total number of paths / destination ports: 6 / 1
+-------------------------------------------------------------------------
+Offset:              7.173ns (Levels of Logic = 5)
+  Source:            SEL<0> (PAD)
+  Destination:       hVecOutTemp_1 (LATCH)
+  Destination Clock: hVecOutTemp_1_not0001 falling
+
+  Data Path: SEL<0> to hVecOutTemp_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   0.849   1.160  SEL_0_IBUF (SEL_0_IBUF)
+     LUT3:I0->O           15   0.648   1.097  hVecOutTemp_3_not000146 (N42)
+     LUT4:I1->O            5   0.643   0.665  hVecOutTemp_1_mux0014111 (N27)
+     LUT4:I2->O            1   0.648   0.563  hVecOutTemp_1_mux001423 (hVecOutTemp_1_mux001423)
+     LUT3:I0->O            1   0.648   0.000  hVecOutTemp_1_mux001428 (hVecOutTemp_1_mux0014)
+     LD:D                      0.252          hVecOutTemp_1
+    ----------------------------------------
+    Total                      7.173ns (3.688ns logic, 3.485ns route)
+                                       (51.4% logic, 48.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'boolVar_not0001'
+  Total number of paths / destination ports: 2 / 1
+-------------------------------------------------------------------------
+Offset:              4.463ns (Levels of Logic = 3)
+  Source:            SEL<1> (PAD)
+  Destination:       boolVar (LATCH)
+  Destination Clock: boolVar_not0001 falling
+
+  Data Path: SEL<1> to boolVar
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.849   1.114  SEL_1_IBUF (SEL_1_IBUF)
+     LUT4:I1->O           10   0.643   0.962  shift_cnt_mux0011<2>31 (N48)
+     LUT4:I1->O            1   0.643   0.000  boolVar_mux00131 (boolVar_mux0013)
+     LD:D                      0.252          boolVar
+    ----------------------------------------
+    Total                      4.463ns (2.387ns logic, 2.076ns route)
+                                       (53.5% logic, 46.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'hVecOutTemp_2_not0001'
+  Total number of paths / destination ports: 6 / 1
+-------------------------------------------------------------------------
+Offset:              7.173ns (Levels of Logic = 5)
+  Source:            SEL<0> (PAD)
+  Destination:       hVecOutTemp_2 (LATCH)
+  Destination Clock: hVecOutTemp_2_not0001 falling
+
+  Data Path: SEL<0> to hVecOutTemp_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   0.849   1.160  SEL_0_IBUF (SEL_0_IBUF)
+     LUT3:I0->O           15   0.648   1.097  hVecOutTemp_3_not000146 (N42)
+     LUT4:I1->O            5   0.643   0.665  hVecOutTemp_1_mux0014111 (N27)
+     LUT4:I2->O            1   0.648   0.563  hVecOutTemp_2_mux001422 (hVecOutTemp_2_mux001422)
+     LUT3:I0->O            1   0.648   0.000  hVecOutTemp_2_mux001427 (hVecOutTemp_2_mux0014)
+     LD:D                      0.252          hVecOutTemp_2
+    ----------------------------------------
+    Total                      7.173ns (3.688ns logic, 3.485ns route)
+                                       (51.4% logic, 48.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'hVecOutTemp_3_not0001'
+  Total number of paths / destination ports: 8 / 1
+-------------------------------------------------------------------------
+Offset:              6.999ns (Levels of Logic = 5)
+  Source:            SEL<0> (PAD)
+  Destination:       hVecOutTemp_3 (LATCH)
+  Destination Clock: hVecOutTemp_3_not0001 falling
+
+  Data Path: SEL<0> to hVecOutTemp_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   0.849   1.160  SEL_0_IBUF (SEL_0_IBUF)
+     LUT3:I0->O           15   0.648   1.160  hVecOutTemp_3_not000146 (N42)
+     LUT4:I0->O            1   0.648   0.423  hVecOutTemp_3_mux001423_SW0 (N54)
+     LUT4:I3->O            1   0.648   0.563  hVecOutTemp_3_mux001423 (hVecOutTemp_3_mux001423)
+     LUT3:I0->O            1   0.648   0.000  hVecOutTemp_3_mux001428 (hVecOutTemp_3_mux0014)
+     LD:D                      0.252          hVecOutTemp_3
+    ----------------------------------------
+    Total                      6.999ns (3.693ns logic, 3.306ns route)
+                                       (52.8% logic, 47.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'hVecOutTemp_4_not0001'
+  Total number of paths / destination ports: 8 / 1
+-------------------------------------------------------------------------
+Offset:              6.999ns (Levels of Logic = 5)
+  Source:            SEL<0> (PAD)
+  Destination:       hVecOutTemp_4 (LATCH)
+  Destination Clock: hVecOutTemp_4_not0001 falling
+
+  Data Path: SEL<0> to hVecOutTemp_4
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   0.849   1.160  SEL_0_IBUF (SEL_0_IBUF)
+     LUT3:I0->O           15   0.648   1.160  hVecOutTemp_3_not000146 (N42)
+     LUT4:I0->O            1   0.648   0.423  hVecOutTemp_4_mux001421_SW0_SW0 (N56)
+     LUT4:I3->O            1   0.648   0.563  hVecOutTemp_4_mux001421_SW0 (N38)
+     LUT4:I0->O            1   0.648   0.000  hVecOutTemp_4_mux001421 (hVecOutTemp_4_mux0014)
+     LD:D                      0.252          hVecOutTemp_4
+    ----------------------------------------
+    Total                      6.999ns (3.693ns logic, 3.306ns route)
+                                       (52.8% logic, 47.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'hVecOutTemp_5_not0001'
+  Total number of paths / destination ports: 6 / 1
+-------------------------------------------------------------------------
+Offset:              7.173ns (Levels of Logic = 5)
+  Source:            SEL<0> (PAD)
+  Destination:       hVecOutTemp_5 (LATCH)
+  Destination Clock: hVecOutTemp_5_not0001 falling
+
+  Data Path: SEL<0> to hVecOutTemp_5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   0.849   1.160  SEL_0_IBUF (SEL_0_IBUF)
+     LUT3:I0->O           15   0.648   1.097  hVecOutTemp_3_not000146 (N42)
+     LUT4:I1->O            5   0.643   0.665  hVecOutTemp_1_mux0014111 (N27)
+     LUT4:I2->O            1   0.648   0.563  hVecOutTemp_5_mux001419 (hVecOutTemp_5_mux001419)
+     LUT3:I0->O            1   0.648   0.000  hVecOutTemp_5_mux001424 (hVecOutTemp_5_mux0014)
+     LD:D                      0.252          hVecOutTemp_5
+    ----------------------------------------
+    Total                      7.173ns (3.688ns logic, 3.485ns route)
+                                       (51.4% logic, 48.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'hVecOutTemp_6_not0001'
+  Total number of paths / destination ports: 6 / 1
+-------------------------------------------------------------------------
+Offset:              7.173ns (Levels of Logic = 5)
+  Source:            SEL<0> (PAD)
+  Destination:       hVecOutTemp_6 (LATCH)
+  Destination Clock: hVecOutTemp_6_not0001 falling
+
+  Data Path: SEL<0> to hVecOutTemp_6
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   0.849   1.160  SEL_0_IBUF (SEL_0_IBUF)
+     LUT3:I0->O           15   0.648   1.097  hVecOutTemp_3_not000146 (N42)
+     LUT4:I1->O            5   0.643   0.665  hVecOutTemp_1_mux0014111 (N27)
+     LUT4:I2->O            1   0.648   0.563  hVecOutTemp_6_mux001415 (hVecOutTemp_6_mux001415)
+     LUT3:I0->O            1   0.648   0.000  hVecOutTemp_6_mux001419 (hVecOutTemp_6_mux0014)
+     LD:D                      0.252          hVecOutTemp_6
+    ----------------------------------------
+    Total                      7.173ns (3.688ns logic, 3.485ns route)
+                                       (51.4% logic, 48.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'shift_cnt_not0001'
+  Total number of paths / destination ports: 26 / 6
+-------------------------------------------------------------------------
+Offset:              6.774ns (Levels of Logic = 5)
+  Source:            SEL<1> (PAD)
+  Destination:       shift_cnt_2 (LATCH)
+  Destination Clock: shift_cnt_not0001 falling
+
+  Data Path: SEL<1> to shift_cnt_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.849   1.114  SEL_1_IBUF (SEL_1_IBUF)
+     LUT4:I1->O           10   0.643   0.962  shift_cnt_mux0011<2>31 (N48)
+     LUT2:I1->O            1   0.643   0.563  shift_cnt_mux0011<2>21 (N37)
+     LUT4:I0->O            1   0.648   0.452  shift_cnt_mux0011<2>4 (shift_cnt_mux0011<2>4)
+     LUT4:I2->O            1   0.648   0.000  shift_cnt_mux0011<2>54 (shift_cnt_mux0011<2>)
+     LD:D                      0.252          shift_cnt_2
+    ----------------------------------------
+    Total                      6.774ns (3.683ns logic, 3.091ns route)
+                                       (54.4% logic, 45.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'temp'
+  Total number of paths / destination ports: 3 / 2
+-------------------------------------------------------------------------
+Offset:              3.203ns (Levels of Logic = 2)
+  Source:            SEL<1> (PAD)
+  Destination:       PSTATE_FSM_FFd1 (FF)
+  Destination Clock: temp rising
+
+  Data Path: SEL<1> to PSTATE_FSM_FFd1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            16   0.849   1.034  SEL_1_IBUF (SEL_1_IBUF)
+     INV:I->O              1   0.648   0.420  PSTATE_FSM_FFd1-In1_INV_0 (PSTATE_FSM_FFd1-In)
+     FDP:D                     0.252          PSTATE_FSM_FFd1
+    ----------------------------------------
+    Total                      3.203ns (1.749ns logic, 1.454ns route)
+                                       (54.6% logic, 45.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'hVecOutRunning_not0001'
+  Total number of paths / destination ports: 18 / 8
+-------------------------------------------------------------------------
+Offset:              4.734ns (Levels of Logic = 3)
+  Source:            SEL<0> (PAD)
+  Destination:       hVecOutRunning_1 (LATCH)
+  Destination Clock: hVecOutRunning_not0001 falling
+
+  Data Path: SEL<0> to hVecOutRunning_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   0.849   1.160  SEL_0_IBUF (SEL_0_IBUF)
+     LUT4:I0->O           16   0.648   1.177  hVecOutRunning_mux0005<7>21 (N35)
+     LUT3:I0->O            1   0.648   0.000  hVecOutRunning_mux0005<1>1 (hVecOutRunning_mux0005<1>)
+     LD:D                      0.252          hVecOutRunning_1
+    ----------------------------------------
+    Total                      4.734ns (2.397ns logic, 2.337ns route)
+                                       (50.6% logic, 49.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'D_OUT_not0001'
+  Total number of paths / destination ports: 32 / 8
+-------------------------------------------------------------------------
+Offset:              4.594ns (Levels of Logic = 3)
+  Source:            SEL<0> (PAD)
+  Destination:       D_OUT_0 (LATCH)
+  Destination Clock: D_OUT_not0001 falling
+
+  Data Path: SEL<0> to D_OUT_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   0.849   1.160  SEL_0_IBUF (SEL_0_IBUF)
+     LUT4:I0->O           16   0.648   1.037  hVecOutRunning_mux0005<7>21 (N35)
+     LUT4:I3->O            1   0.648   0.000  D_OUT_mux0007<7>1 (D_OUT_mux0007<7>)
+     LD:D                      0.252          D_OUT_7
+    ----------------------------------------
+    Total                      4.594ns (2.397ns logic, 2.197ns route)
+                                       (52.2% logic, 47.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'D_OUT_not0001'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              5.668ns (Levels of Logic = 1)
+  Source:            D_OUT_7 (LATCH)
+  Destination:       D_OUT<7> (PAD)
+  Source Clock:      D_OUT_not0001 falling
+
+  Data Path: D_OUT_7 to D_OUT<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               1   0.728   0.420  D_OUT_7 (D_OUT_7)
+     OBUF:I->O                 4.520          D_OUT_7_OBUF (D_OUT<7>)
+    ----------------------------------------
+    Total                      5.668ns (5.248ns logic, 0.420ns route)
+                                       (92.6% logic, 7.4% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 7.94 secs
+ 
+--> 
+
+
+Total memory usage is 519436 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   13 (   0 filtered)
+Number of infos    :   15 (   0 filtered)
+
