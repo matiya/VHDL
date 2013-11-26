@@ -59,22 +59,41 @@ begin
 	begin 
 		if(RESET = '1') then PSTATE <= IDLE; --reset to "00000000"
 		elsif(rising_edge(CLK_DIV)) then PSTATE <= NSTATE; --switch states
-			--if(pstate \= nstate)
-					--reset vectors and coutners;
-					--end if;
+--			if(PSTATE /= NSTATE) then
+--				hVecOutRunning <= "00000000";
+--				hVecOutTemp <= "00000000";
+--				shift_cnt <= 0;
+--				boolVar <= '0';
+--			end if;
 		end if;
 	end process sync_proc;
 	
-	switch: process(PSTATE, SEL, CLK_DIV)
+	switch: process(PSTATE, SEL, CLK_DIV )--, shift_cnt, hVecOutTemp, boolVar)
 	--switches between states
 	--this ain't necesarry since "11" will land in counter no matter what
 	begin
 		case PSTATE is
 		  when IDLE =>
 			  if(SEL = "01") then NSTATE <= RUNNING;
+				hVecOutRunning <= "00000001";
+				hVecOutTemp <= "00000001";
+				shift_cnt <= 0;
+				boolVar <= '0';
+
 			  elsif(SEL = "11") then NSTATE <= COUNTER;
+				hVecOutRunning <= "00000000";
+				hVecOutTemp <= "00000000";
+				shift_cnt <= 0;
+				boolVar <= '0';
+
 			  elsif(SEL = "10") then NSTATE <= SHIFT;
+				hVecOutRunning <= "00000000";
+				hVecOutTemp <= "00000000";
+				shift_cnt <= 0;
+				boolVar <= '0';
+
 			  else NSTATE <= IDLE;
+			  D_OUT <= std_logic_vector(hVecOutTemp);
 			  end if;
 			  
 			when RUNNING =>
