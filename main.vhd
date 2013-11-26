@@ -47,7 +47,7 @@ type state_type is (SHIFT, COUNTER, RUNNING, IDLE);
 signal NSTATE, PSTATE : state_type; --next_state, present_state
 signal hVecOutRunning : std_logic_vector(7 downto 0) := "00000000"; --intermediate signal
 signal hVecOutTemp : unsigned(7 downto 0):="00000001" ;  --don't use both
-signal count : std_logic_vector(14 downto 0) := "000000000000000"; --counter for freq divider
+signal count : std_logic_vector(24 downto 0) := "0000000000000000000000000"; --counter for freq divider
 signal CLK_DIV : STD_LOGIC := '0'; --new clock @ 1Hz
 signal temp: STD_LOGIC  := '0'; --temp var used in freq_div
 signal shift_cnt  : integer range 0 to 14 := 0;  -- counter
@@ -175,31 +175,15 @@ begin
 		end case;
 	end process switch;
 	
---	running_state : process(CLK_DIV)
---	begin
---		if( rising_edge(CLK_DIV) and PSTATE = RUNNING)  then  
---			  hVecOutRunning <= hVecOutRunning + 1;
---			  --D_OUT <= hVecOutRunning;
---		end if;
---	end process running_state;
---	
---	idle_state : process(CLK_DIV)
---	begin
---		if( rising_edge(CLK_DIV) and PSTATE = IDLE)  then 
---			hVecOutRunning  <= "00000000";
---			D_OUT <= hVecOutRunning;
---		end if;
---	end process idle_state;
-
     frequency_divider: process (CLK, RESET) 
 	 begin
         if (RESET = '1') then
             temp <= '0';
-            count <= "000000000000000";
+            count <= "0000000000000000000000000";
         elsif( rising_edge(CLK) ) then
-            if (count = 249) then --TODO:change to 24999 when finished
+            if (count = 33554430) then --TODO:change to 24999 when finished
                 temp <= NOT(temp);
-                count <= "000000000000000";
+                count <= "0000000000000000000000000";
             else
                 count <= count + 1;
             end if;
